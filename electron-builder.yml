@@ -23,6 +23,12 @@ files:
 - "!{.config,.sessions,flows,flows_cred}.json"
 - "!log.txt"
 - "!*.jsop"
+extraResources:
+- from: "node_modules/ngrok"
+  to: "node_modules/ngrok"
+  filter: ["**/*"]
+buildDependenciesFromSource: true
+npmRebuild: true
 win:
   target:
   - nsis
@@ -40,7 +46,7 @@ mac:
   category: "public.app-category.developer-tools"
   target:
   - zip
-  - dmg
+  # - dmg
   icon: "images/node-red-icon.icns"
   publish:
   - provider: "github"
