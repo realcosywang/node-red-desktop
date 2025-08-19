@@ -18,10 +18,10 @@ interface CONFIG {
   allowPrerelease: boolean;
   autoDownload: boolean;
   hideOnMinimize: boolean;
-  httpNodeAuth: {user: string, pass: string};
+  httpNodeAuth: { user: string; pass: string };
   listenPort: string;
   debugOut: boolean;
-};
+}
 
 const DEFAULT_CONFIG: CONFIG = {
   openLastFile: true,
@@ -36,9 +36,9 @@ const DEFAULT_CONFIG: CONFIG = {
   allowPrerelease: false,
   autoDownload: false,
   hideOnMinimize: false,
-  httpNodeAuth: {user: "", pass: ""},
+  httpNodeAuth: { user: "", pass: "" },
   listenPort: "",
-  debugOut: false
+  debugOut: false,
 };
 
 export class ConfigManager {
@@ -56,8 +56,10 @@ export class ConfigManager {
 
   private migration(config: any): CONFIG {
     //v0.8.9
-    if (!config.hasOwnProperty("openLastFile")) config.openLastFile = DEFAULT_CONFIG.openLastFile;
-    if (!config.hasOwnProperty("httpNodeAuth")) config.httpNodeAuth = DEFAULT_CONFIG.httpNodeAuth;
+    if (!config.hasOwnProperty("openLastFile"))
+      config.openLastFile = DEFAULT_CONFIG.openLastFile;
+    if (!config.hasOwnProperty("httpNodeAuth"))
+      config.httpNodeAuth = DEFAULT_CONFIG.httpNodeAuth;
     return config;
   }
 
@@ -69,7 +71,7 @@ export class ConfigManager {
     } else {
       config = DEFAULT_CONFIG;
     }
-    return config
+    return config;
   }
 
   public save(): boolean {
